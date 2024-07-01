@@ -1,0 +1,60 @@
+﻿@using Classify.Core.Models
+
+@model IEnumerable<ComposerDisplayModel>
+
+<h2 class="text-center">Take a look at all time best composers</h2>
+<br />
+
+<section>
+    @foreach (var composer in Model)
+    {
+        <nav>
+            <ul class="flex-container">
+                <li>
+                    <a asp-controller="Piece" asp-action="All" asp-route-id="@composer.Id">
+                        <div>
+                            <img src="@composer.ImageUrl" />
+                            <p>@composer.FullName</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
+</section>
+
+<style>
+    p, h1{
+        font-family: "Montserrat", sans-serif;
+        margin-top: 0.6em;
+    }
+
+    li{
+        list-style-type: none;
+    }
+
+    a{
+        text-decoration: none;
+        color:black;
+    }
+
+    .flex-container li a div{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .flex-container li img{
+        width: 7rem;
+        height: 7em;
+        display: block;
+        border-radius: 50%;
+    }
+
+    section{
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        justify-content: center;
+    }
+</style>

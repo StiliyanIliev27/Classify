@@ -1,0 +1,99 @@
+﻿@using Classify.Core.Contracts
+@using Classify.Core.Models
+@using Classify.Infrastructure.Models
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+
+@model IEnumerable<PieceViewModel>
+
+@{
+    int i = 1;
+}
+
+<div class="site-container">
+    <div class="composer-container">
+        <img src="@Model.First().ComposerImageUrl"/>
+        <p style="font-style: italic; text-align: center;">@Model.First().ComposerFullName</p>
+        <p>@Model.First().ComposerDescription</p>
+        <p>Year born: @Model.First().ComposerYearnBorn</p>
+    </div>
+
+    <div class="pieces-container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Piece</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Instrument Type</th>
+                    <th scope="col">Audio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var piece in Model)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@piece.Title</td>
+                        <td>@piece.Type</td>                     
+                        <td>@piece.InstrumentType</td>
+                        <td>
+                            @if(piece.AudioContentType == null)
+                            {
+                                <form asp-action="Upload" asp-controller="Piece" asp-route-pieceId="@piece.Id" enctype="multipart/form-data" method="post">
+                                    <input type="file" name="file" />
+                                    <input type="submit" value="Upload" />
+                                </form>
+                            }
+                            else
+                            {
+                                <audio controls>
+                                    <source src="@Url.Action("Play", "Piece", new { id = piece.Id })" type="@piece.AudioContentType">
+                                    Your browser does not support the audio element.
+                                </audio>
+                                <div class="buttons-flex">
+                                    <a asp-action="Download" asp-route-id="@piece.Id" class="btn btn-primary">Download audio</a>
+                                    <form method="post" asp-action="Remove" asp-controller="Piece" asp-route-id="@piece.Id">
+                                        <button type="submit" class="btn btn-danger">Remove audio</button>
+                                    </form>
+                                </div>
+                                     
+                            }
+                        </td>
+                    </tr>
+
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .site-container{
+        display: flex;
+    }
+
+    .composer-container{
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .composer-container img{
+        width: 30%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        border-radius: 1em;
+        box-shadow: 0 0 1em 0 rgb(0,0,0,0.5);
+        margin-bottom: 0.5em;
+    }
+
+    .buttons-flex{
+        display: flex;
+        gap: 1em;
+    }
+</style>
+
