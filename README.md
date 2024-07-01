@@ -2,7 +2,8 @@
 
 The Classical Music Library is a web application built with ASP.NET MVC and SQL Server, designed to provide a platform for users to explore and contribute to a curated collection of classical music composers and their renowned pieces. Whether you're passionate about classical music or interested in expanding your knowledge, our application offers a seamless experience to discover and contribute to the rich history of classical compositions.
 
-![Library Preview](./assets/screenshots/home.png)
+![Screenshot 2024-07-01 184117](https://github.com/StiliyanIliev27/Classify/assets/142061336/cdbb585b-2e0d-4cb0-a781-e2be1058c4c8)
+
 
 ## 💡 Features
 
@@ -41,6 +42,13 @@ To get a local copy up and running follow these simple steps.
       - `PM> Update-Database`
 7. Run the application.
 
+## 📸 Screenshots
+![Screenshot 2024-07-01 184329](https://github.com/StiliyanIliev27/Classify/assets/142061336/ed03b7a3-7b2c-4730-9d52-68b40d239b99)
+![Screenshot 2024-07-01 184423](https://github.com/StiliyanIliev27/Classify/assets/142061336/4d947afc-2ae0-40da-825a-1524c1857035)
+![Screenshot 2024-07-01 184449](https://github.com/StiliyanIliev27/Classify/assets/142061336/0778aed5-96df-4f66-a7a6-9bf80f02db56)
+
+
+
  ## ✏️ Contributing
 
 Contributions are welcome! Please follow these guidelines:
@@ -55,3 +63,5 @@ Contributions are welcome! Please follow these guidelines:
 This project is licensed under the [MIT License](LICENSE).
 
 ## 💎 I hope you like it! 
+
+## 🛠️ The application is still in development!
